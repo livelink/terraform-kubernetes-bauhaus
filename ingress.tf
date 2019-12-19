@@ -1,7 +1,7 @@
 resource "kubernetes_ingress" "bauhaus" {
   metadata {
-    name = var.set_name
-    namespace = kubernetes_namespace.namespace.metadata[0].name
+    name = local.instance_name
+    namespace = local.namespace
 
 
     annotations = {

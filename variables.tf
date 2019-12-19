@@ -7,7 +7,7 @@ variable "revision_history_limit" {
 }
 
 variable "namespace" {
-  default = "bh-livelink-test"
+  default = "default"
 }
 
 variable "replicas" {
@@ -24,10 +24,6 @@ variable "cloud_provider" {
 
 variable "client_name" {
   default = "livelink"
-}
-
-variable "docker_config" {
-  description = "Docker Authentication JSON"
 }
 
 variable "redis_version" {
@@ -89,7 +85,10 @@ variable "bh_resources" {
     }
   }
 }
-
+variable instance {
+  description = "Name for my bauhaus"
+  default     = "default"
+}
 variable "set_name" {
   description = "Name for the services and sets"
   default = "bauhaus"
@@ -98,4 +97,9 @@ variable "set_name" {
 variable "ingress_port" {
   description = "TCP port for web inbound traffic"
   default = 80
+}
+
+variable "manage_namespace" {
+  default = false
+  description = "Whether or not this module manages the namespace"
 }

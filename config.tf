@@ -1,7 +1,7 @@
 resource "kubernetes_config_map" "bauhaus" {
   metadata {
     name      = "config"
-    namespace = kubernetes_namespace.namespace.metadata[0].name
+    namespace = local.namespace
   }
 
   data = {

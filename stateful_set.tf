@@ -1,10 +1,10 @@
 resource "kubernetes_stateful_set" "bauhaus" {
   metadata {
-    name      = var.set_name
-    namespace = kubernetes_namespace.namespace.metadata[0].name
+    name      = local.instance_name
+    namespace = local.namespace
 
     labels = {
-      "app.kubernetes.io/name" = var.set_name
+      "app.kubernetes.io/name" = local.instance_name
       "app.kubernetes.io/part-of" = "bauhaus"
     }
   }
@@ -15,7 +15,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
 
     selector {
       match_labels = {
-        "app.kubernetes.io/name" = var.set_name
+        "app.kubernetes.io/name" = local.instance_name
         "app.kubernetes.io/part-of" = "bauhaus"
       }
     }
@@ -33,7 +33,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
     template {
       metadata {
         labels = {
-          "app.kubernetes.io/name" = var.set_name
+          "app.kubernetes.io/name" = local.instance_name
           "app.kubernetes.io/part-of" = "bauhaus"
         }
       }
@@ -56,7 +56,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
         }
 
         image_pull_secrets {
-          name = kubernetes_secret.docker_secret.metadata[0].name
+          name = local.docker_secret
         }
 
         container {
