@@ -1,3 +1,3 @@
 resource "google_compute_global_address" "bauhaus" {
-  name = "bauhaus-${var.environment}-${var.client_name}-${var.instance}"
+  name = "bauhaus-${var.environment}-${var.namespace}-${var.client_name}-${var.instance}"
 }
