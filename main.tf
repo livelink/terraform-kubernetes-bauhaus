@@ -31,10 +31,10 @@ provider "kubernetes" {
 
 locals {
   google_project_data = data.terraform_remote_state.client_google_projects.outputs.projects[var.environment]
-  project_id = local.google_project_data["project_id"]
-  project_name = local.google_project_data["project_name"]
+  project_id          = local.google_project_data["project_id"]
+  project_name        = local.google_project_data["project_name"]
   project_credentials = base64decode(local.google_project_data["project_service_account_key"])
-  resource_location = data.terraform_remote_state.client_metadata.outputs.location
+  resource_location   = data.terraform_remote_state.client_metadata.outputs.location
 }
 
 provider google {
@@ -53,7 +53,7 @@ data terraform_remote_state client_metadata {
   backend = "s3"
   config = {
     bucket = "livelink-terraform"
-    key = "client/${var.client_name}.tfstate"
+    key    = "client/${var.client_name}.tfstate"
     region = "eu-west-2"
   }
 }
@@ -62,7 +62,7 @@ data terraform_remote_state client_google_projects {
   backend = "s3"
   config = {
     bucket = "livelink-terraform"
-    key = "client-projects/${var.client_name}.tfstate"
+    key    = "client-projects/${var.client_name}.tfstate"
     region = "eu-west-2"
   }
 }
@@ -72,7 +72,7 @@ data terraform_remote_state dns {
 
   config = {
     bucket = "livelink-terraform"
-    key = "infrastructure/dns/${var.client_name}.tfstate"
+    key    = "infrastructure/dns/${var.client_name}.tfstate"
     region = "eu-west-2"
   }
 }
@@ -87,12 +87,12 @@ provider dns {
 }
 
 data terraform_remote_state docker_config {
-  count = local.namespace_resources
+  count   = local.namespace_resources
   backend = "s3"
 
   config = {
     bucket = "livelink-terraform"
-    key = "infrastructure/dockerhub.tfstate"
+    key    = "infrastructure/dockerhub.tfstate"
     region = "eu-west-2"
   }
 }

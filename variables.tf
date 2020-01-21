@@ -36,14 +36,14 @@ variable "redis_replicas" {
 
 variable "memcache_resource_limits" {
   default = {
-    cpu = "150m"
+    cpu    = "150m"
     memory = "256Mi"
   }
 }
 
 variable "memcache_resource_requests" {
   default = {
-    cpu = "50m"
+    cpu    = "50m"
     memory = "64Mi"
   }
 }
@@ -51,35 +51,35 @@ variable "memcache_resource_requests" {
 variable "bh_resources" {
   default = {
     server = {
-      limits =  {
-        cpu = "150m"
+      limits = {
+        cpu    = "150m"
         memory = "100Mi"
       }
 
       requests = {
-        cpu = "100m"
+        cpu    = "100m"
         memory = "64Mi"
       }
     }
     processor = {
-      limits =  {
-        cpu = "50m"
+      limits = {
+        cpu    = "50m"
         memory = "100Mi"
       }
 
       requests = {
-        cpu = "50m"
+        cpu    = "50m"
         memory = "64Mi"
       }
     }
     fetcher = {
-      limits =  {
-        cpu = "50m"
+      limits = {
+        cpu    = "50m"
         memory = "100Mi"
       }
 
       requests = {
-        cpu = "50m"
+        cpu    = "50m"
         memory = "64Mi"
       }
     }
@@ -91,15 +91,21 @@ variable instance {
 }
 variable "set_name" {
   description = "Name for the services and sets"
-  default = "bauhaus"
+  default     = "bauhaus"
 }
 
 variable "ingress_port" {
   description = "TCP port for web inbound traffic"
-  default = 80
+  default     = 80
 }
 
 variable "manage_namespace" {
-  default = false
+  default     = false
   description = "Whether or not this module manages the namespace"
+}
+
+variable "dice" {
+  default = {
+    enabled = false
+  }
 }

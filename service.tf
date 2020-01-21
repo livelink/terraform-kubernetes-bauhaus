@@ -4,14 +4,14 @@ resource "kubernetes_service" "bauhaus" {
     namespace = local.namespace
 
     labels = {
-      "app.kubernetes.io/name" = local.instance_name
+      "app.kubernetes.io/name"    = local.instance_name
       "app.kubernetes.io/part-of" = "bauhaus"
     }
   }
 
   spec {
     selector = {
-      "app.kubernetes.io/name" = local.instance_name
+      "app.kubernetes.io/name"    = local.instance_name
       "app.kubernetes.io/part-of" = "bauhaus"
     }
 

@@ -4,7 +4,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
     namespace = local.namespace
 
     labels = {
-      "app.kubernetes.io/name" = local.instance_name
+      "app.kubernetes.io/name"    = local.instance_name
       "app.kubernetes.io/part-of" = "bauhaus"
     }
   }
@@ -15,7 +15,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
 
     selector {
       match_labels = {
-        "app.kubernetes.io/name" = local.instance_name
+        "app.kubernetes.io/name"    = local.instance_name
         "app.kubernetes.io/part-of" = "bauhaus"
       }
     }
@@ -33,7 +33,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
     template {
       metadata {
         labels = {
-          "app.kubernetes.io/name" = local.instance_name
+          "app.kubernetes.io/name"    = local.instance_name
           "app.kubernetes.io/part-of" = "bauhaus"
         }
       }
@@ -81,7 +81,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
           }
 
           env {
-            name = "USE_SSL"
+            name  = "USE_SSL"
             value = "true"
           }
 
@@ -99,7 +99,7 @@ resource "kubernetes_stateful_set" "bauhaus" {
 
           readiness_probe {
             http_get {
-              path =  "/check"
+              path = "/check"
               port = 8080
             }
           }
